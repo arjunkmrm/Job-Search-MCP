@@ -5,9 +5,7 @@ export const scrapeLinkedInJobs = async ({
   location = '',
   pages = 1,
   datePosted = 'r604800'
-} = {}) => {
-  console.log(`Starting LinkedIn job scraper for: ${jobTitle} in ${location}`);
-  
+} = {}) => {  
   const browser = await puppeteer.launch({
     headless: 'new',
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
@@ -21,14 +19,10 @@ export const scrapeLinkedInJobs = async ({
     
     const searchUrl = `https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent(jobTitle)}&location=${encodeURIComponent(location)}&f_TPR=${datePosted}`;
     await page.goto(searchUrl, { waitUntil: 'networkidle2', timeout: 60000 });
-    
-    console.log(`Navigated to: ${searchUrl}`);
-    
+        
     const jobs = [];
     
-    for (let currentPage = 0; currentPage < pages; currentPage++) {
-      console.log(`Scraping page ${currentPage + 1} of ${pages}`);
-      
+    for (let currentPage = 0; currentPage < pages; currentPage++) {      
       await page.waitForSelector('.jobs-search__results-list', { timeout: 30000 });
       
       await autoScroll(page);
@@ -37,9 +31,7 @@ export const scrapeLinkedInJobs = async ({
         const listings = [];
         
         const jobCards = document.querySelectorAll('.jobs-search__results-list > li');
-        
-        console.log(`Found ${jobCards.length} job cards on the page`);
-        
+                
         jobCards.forEach((card, index) => {
           try {
             const titleElement = 
@@ -70,9 +62,7 @@ export const scrapeLinkedInJobs = async ({
               card.querySelector('.base-card__metadata time');
               
             const dateAttr = dateElement?.getAttribute('datetime');
-            
-            console.log(`Card ${index}: Title: ${titleElement?.textContent?.trim() || 'Not found'}`);
-            
+                        
             if (titleElement) {
               const url = linkElement?.href;
               
@@ -112,14 +102,7 @@ export const scrapeLinkedInJobs = async ({
         
         return listings;
       });
-      
-      console.log(`Extracted ${pageJobs.length} jobs on page ${currentPage + 1}`);
-      
-      if (pageJobs.length > 0) {
-        console.log('Sample job data:');
-        console.log(JSON.stringify(pageJobs[0], null, 2));
-      }
-      
+
       jobs.push(...pageJobs);
       
       if (currentPage < pages - 1) {
@@ -134,18 +117,13 @@ export const scrapeLinkedInJobs = async ({
             page.waitForNavigation({ waitUntil: 'networkidle2' })
           ]);
         } else {
-          console.log('No more pages available');
           break;
         }
       }
     }
     
     const uniqueJobs = jobs;
-    
-    console.log(`Total jobs found: ${uniqueJobs.length}`);
-    
-    console.log('Job Results:');
-        
+
     return uniqueJobs;
   } catch (error) {
     console.error('Error during scraping:', error);
