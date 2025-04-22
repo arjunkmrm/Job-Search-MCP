@@ -1,8 +1,7 @@
 {
   "mcpServers": {
     "jobSearch-server": {
-      "command": "npx",
-      "args": ["mcp-remote", "https://job-search-mcp.onrender.com/sse"]
+      "url": "http://localhost:8081/sse"
     }
   }
 }

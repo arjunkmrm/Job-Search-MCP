@@ -11,6 +11,10 @@ app.get("/sse", async (req, res) => {
   await server.connect(transport);
 });
 
+app.post("/messages", async (req, res) => {
+  await transport.handlePostMessage(req, res);
+});
+
 const port = process.env.PORT || 8081;
 app.listen(port, () => {
   console.log(`MCP SSE Server is running on http://localhost:${port}/sse`);
