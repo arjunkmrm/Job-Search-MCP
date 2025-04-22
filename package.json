@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node src/server.js",
     "startstdio": "node src/stdio-server.js",
-    "dev": "nodemon src/server.js"
+    "dev": "nodemon src/server.js",
+    "postinstall": "puppeteer install"
   },
   "keywords": [],
   "author": "",
