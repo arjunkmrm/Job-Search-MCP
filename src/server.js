@@ -5,6 +5,8 @@ import { server } from "./server_logic.js";
 
 const app = express();
 
+app.get("/", (req, res) => res.send("Hello World!"));
+
 let transport;
 app.get("/sse", async (req, res) => {
   transport = new SSEServerTransport("/messages", res);
