@@ -10,7 +10,6 @@ export const scrapeLinkedInJobs = async ({
     headless: "new",
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
     defaultViewport: null,
-    executablePath: "/usr/bin/google-chrome",
   });
 
   try {

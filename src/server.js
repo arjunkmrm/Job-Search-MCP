@@ -1,7 +1,7 @@
 import express from "express";
 import { SSEServerTransport } from "@modelcontextprotocol/sdk/server/sse.js";
 
-import { server } from "./server_logic.js";
+import { server } from "./server-logic.js";
 
 const app = express();
 

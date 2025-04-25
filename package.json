@@ -6,8 +6,7 @@
   "scripts": {
     "start": "node src/server.js",
     "startstdio": "node src/stdio-server.js",
-    "dev": "nodemon src/server.js",
-    "postinstall": "bash render-build.sh"
+    "dev": "nodemon src/server.js"
   },
   "keywords": [],
   "author": "",
