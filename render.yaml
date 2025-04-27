@@ -1,2 +1,0 @@
-buildCommand: npm install && npm install puppeteer
-startCommand: node server.js

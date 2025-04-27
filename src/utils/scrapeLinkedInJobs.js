@@ -6,8 +6,10 @@ export const scrapeLinkedInJobs = async ({
   pages = 1,
   datePosted = "r604800",
 } = {}) => {
-  const browser = await puppeteer.connect({
-    browserWSEndpoint: `wss://chrome.browserless.io?token=${process.env.BROWSERLESS_API_KEY}`,
+  const browser = await puppeteer.launch({
+    headless: "new",
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    defaultViewport: null,
   });
 
   try {
