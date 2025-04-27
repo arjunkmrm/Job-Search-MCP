@@ -1,0 +1,18 @@
+# Smithery.ai configuration
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    required: []
+    properties: {}
+  commandFunction: |-
+    (config) => ({
+      "command": "node",
+      "args": [
+        "src/stdio-server.js"
+      ],
+      "env": {
+        "NODE_ENV": "production"
+      }
+    })
