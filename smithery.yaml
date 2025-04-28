@@ -10,7 +10,8 @@ startCommand:
     (config) => ({
       "command": "node",
       "args": [
-        "src/stdio-server.js"
+        "src/stdio-server.js",
+        '--stdio'
       ],
       "env": {
         "NODE_ENV": "production"
