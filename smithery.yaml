@@ -10,7 +10,7 @@ startCommand:
     (config) => ({
       "command": "node",
       "args": [
-        "src/stdio-server.js",
+        "dist/stdio-server.js",
         '--stdio'
       ],
       "env": {

@@ -15,4 +15,4 @@ COPY . .
 # RUN npm run build
 
 # Command will be overridden by smithery.yaml
-CMD ["node", "src/stdio-server.js"]
+CMD ["node", "dist/stdio-server.js"]

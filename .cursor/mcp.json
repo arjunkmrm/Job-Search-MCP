@@ -5,3 +5,12 @@
     }
   }
 }
+
+// {
+//   "mcpServers": {
+//     "jobSearch-server": {
+//       "command": "npx",
+//       "args": ["mcp-remote", "https://job-search-mcp.vercel.app/sse"]
+//     }
+//   }
+// }
