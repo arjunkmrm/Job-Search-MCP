@@ -1,5 +1,5 @@
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { server } from "./server_logic.js";
+import { server } from "./server-logic.js";
 
 try {
   const transport = new StdioServerTransport();
